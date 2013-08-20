@@ -1,0 +1,41 @@
+body {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background: #ecf0f1; }
+
+@media (max-width: 670px) {
+  body {
+    padding-top: 0px; }
+    body #main_nav {
+      position: relative;
+      margin: 0px 0px 20px 10px; }
+    body #messages-title {
+      margin-top: 0px; } }
+@media (max-width: 450px) {
+  #main_nav .button-text {
+    display: none; } }
+#message-pager {
+  position: fixed;
+  bottom: 0px;
+  left: 20px; }
+
+#messages {
+  margin-top: 20px;
+  font-size: 20px; }
+  #messages td, #messages th {
+    padding: 15px;
+    color: #2C3E50; }
+  #messages td {
+    color: #34495E; }
+
+#messages-title {
+  color: #2C3E50;
+  margin-top: -50px; }
+
+#main_nav {
+  position: fixed;
+  top: 10px;
+  right: 10px; }
+
+#account-links {
+  width: 200px; }

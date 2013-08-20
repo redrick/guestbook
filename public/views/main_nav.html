@@ -1,0 +1,30 @@
+<div id="main_nav" class="btn-toolbar" ng-cloak>
+  <div class="btn-group">
+    <a class="btn btn-primary" ng-click="openMessageForm()"><i class="fui-new"></i></a>
+  </div>
+  <div class="btn-group">
+    <a class="btn btn-inverse active" href="#fakelink">
+      <i class="fui-list"></i><span class="button-text">Guestbook</span>
+    </a>
+    <a class="btn btn-inverse" ng-if="current_user" href="#/users/{{current_user.id}}/messages">
+      <i class="fui-heart"></i><span class="button-text">My Messages</span>
+    </a>
+    <a class="btn btn-inverse" ng-if="!current_user" ng-click="openSignupForm()">
+      Sign Up
+    </a>
+    <a class="btn btn-inverse" ng-if="!current_user" ng-click="openSigninForm()">
+      Sign In
+    </a>
+
+      <a class="btn btn-inverse dropdown-toggle" ng-if="current_user">
+        <i class="fui-user"></i><span class="button-text">Account</span>
+        <span class="caret"></span>
+      </a>
+      <ul id="account-links" class="dropdown-menu dropdown-inverse pull-right">
+        <li><a ng-click="updateUserInfo()"><span class="button-text">Update Info</span></a></li>
+        <li><a ng-click="signoutUser()"><span class="button-text">Sign Out</span></a></li>
+      </ul>
+
+
+  </div>
+</div>

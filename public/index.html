@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<title> Guest Book</title>
+
+<link rel="stylesheet" href="vendor/bootstrap.css"/>
+<link rel="stylesheet" href="vendor/bootstrap-responsive.css"/>
+<link rel="stylesheet" href="vendor/flat-ui.css" />
+<link rel="stylesheet" href="styles/main.css" />
+
+</head>
+<body class="" ng-app="guestbook" ng-controller="MainCtrl">
+
+    <ng-include src="'views/sign_up.html'"></ng-include>
+    <ng-include src="'views/sign_in.html'"></ng-include>
+
+    <div class="container">
+
+      <ng-include src="'views/main_nav.html'"></ng-include>
+
+      <ng-view ng-cloak></ng-view>
+
+    </div>
+
+</body>
+
+
+
+
+<script src="vendor/angular.js"></script>
+<script src="vendor/angular-resource.js"></script>
+<script src="vendor/angular-cookies.js"></script>
+<script src="vendor/angular-animate.js"></script>
+<script src="vendor/angular-route.js"></script>
+
+<script src="vendor/angular-bootstrap.js"></script>
+<script src="vendor/ui-bootstrap-tpls-0.5.0.js"></script>
+
+<script src="scripts/guestbook.js"></script>
+<script src="scripts/controllers/main_controller.js"></script>
+<script src="scripts/controllers/messages_controller.js"></script>
+<script src="scripts/controllers/session_controller.js"></script>
+<script src="scripts/models/message.js"></script>
+<script src="scripts/models/user.js"></script>
+<script src="scripts/models/session.js"></script>
+</body>
+
+</html>
