@@ -7,8 +7,6 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
 
-
-
     if params[:user_id]
       @messages = Message.where(:user_id => params[:user_id].to_i)
     else
@@ -20,7 +18,6 @@ class MessagesController < ApplicationController
       @page = params[:page]
     end
 
-    @messages_count = Message.count
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :messages }
