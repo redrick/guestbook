@@ -8,12 +8,15 @@
 <h3 id="messages-title" ng-cloak>{{title}}</h3>
 
 <table id="messages" class="table table-hover">
-  <tr><th>guest</th><th>message</th></tr>
+  <tr><th>guest name</th><th>location</th><th>date</th><th>message</th></tr>
   <tr class="animate-repeat" ng-repeat="message in messages  | orderBy:'id':true | filter:q" ng-cloak>
-    <td class="user-name span4">
+
+    <td class="user-name span2">
       <a ng-href="#/users/{{message.user.id}}/messages">{{message.user.name}}</a>
     </td>
-    <td class="content span8">{{message.content}}</td>
+    <td class="user-location span2">{{message.user.location}}</td>
+    <td class="message-date span3">{{message.created_at | date:'h:mma on M/d'}}</td>
+    <td class="content">{{message.content}}</td>
   </tr>
 </table>
 

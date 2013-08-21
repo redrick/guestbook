@@ -1,5 +1,5 @@
 object @message
 attributes :id, :content, :created_at
 
-child(:user) { attributes :name, :id}
+node(:user) { |m| partial("users/_user", :object => m.user) }
 node(:page) { |m| @current_page}
