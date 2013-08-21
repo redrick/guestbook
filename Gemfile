@@ -21,6 +21,7 @@ gem 'tubesock'
 gem 'puma'
 
 gem 'debugger'
+gem 'database_cleaner', '1.0.0.RC1'
 
 
 group :development, :test do
@@ -31,6 +32,7 @@ group :development, :test do
   gem 'factory_girl'
   gem 'sass'
   gem 'rb-fsevent'
+
 end
 # Gems used only for assets and not required
 # in production environments by default.

@@ -15,10 +15,12 @@ class MessagesController < ApplicationController
       @messages = Message.all
     end
 
-    @messages = @messages.paginate(:per_page=>params[:per_page].to_i,:page=>params[:page].to_i).order("id desc")
-    @page = params[:page]
-    @messages_count = Message.count
+    if params[:page] and params[:per_page]
+      @messages = @messages.paginate(:per_page=>params[:per_page].to_i,:page=>params[:page].to_i).order("id desc")
+      @page = params[:page]
+    end
 
+    @messages_count = Message.count
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :messages }
