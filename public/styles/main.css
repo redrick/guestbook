@@ -13,7 +13,15 @@ body {
       margin-top: 0px; } }
 @media (max-width: 450px) {
   #main_nav .button-text {
-    display: none; } }
+    display: none; }
+
+  body #messages {
+    font-size: 12px; }
+    body #messages td {
+      max-width: 30px;
+      line-height: 15px; }
+    body #messages td.user-info {
+      width: 100px; } }
 #message-pager {
   position: fixed;
   bottom: 0px;
@@ -24,9 +32,12 @@ body {
   font-size: 20px; }
   #messages td, #messages th {
     padding: 15px;
-    color: #2C3E50; }
+    color: #2C3E50;
+    line-height: 30px; }
   #messages td {
     color: #34495E; }
+  #messages td.user-info {
+    width: 300px; }
 
 #messages-title {
   color: #2C3E50;
@@ -39,3 +50,23 @@ body {
 
 #account-links {
   width: 200px; }
+
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move {
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  transition: all linear 0.5s; }
+
+.animate-repeat.ng-enter {
+  opacity: 0; }
+
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity: 1; }
+
+.animate-repeat.ng-leave {
+  opacity: 1; }
+
+.animate-repeat.ng-leave.ng-leave-active {
+  opacity: 0; }

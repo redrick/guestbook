@@ -1,19 +1,21 @@
 angular.module('MessagesCtrl', []).
 controller('MessagesCtrl',
-function($rootScope, $scope, $filter, $location, $cookies,
-  $route, $log, $exceptionHandler, $routeParams, Message, User) {
+function($rootScope, $scope, $filter, $location, $cookies, $log,
+  $exceptionHandler, $routeParams, Message, User, progressbar, $timeout) {
 
+  progressbar.color("#1abc9c")
+  progressbar.start();
 
   $scope.params = {per_page: 20, page: 1}
 
-  setTimeout(function() {
+  $timeout(function() {
     $scope.getMessages();
     $scope.$apply();
   }, 0);
 
    Message.count(function(data) {
     $scope.message_count = data.count
-    $scope.pages = []
+    $scope.pages = [];
     $scope.total_pages = Math.round($scope.message_count/$scope.params.per_page)
     for (var i=0; i < $scope.total_pages; i++) {
       $scope.pages.push(i+1);
@@ -23,6 +25,7 @@ function($rootScope, $scope, $filter, $location, $cookies,
   $scope.new_message = new Message();
 
   $scope.nextPage = function() {
+    progressbar.start();
     if ($scope.params.page < $scope.total_pages) {
       $scope.params.page++;
       $scope.getMessages();
@@ -30,6 +33,7 @@ function($rootScope, $scope, $filter, $location, $cookies,
   }
 
   $scope.previousPage = function() {
+    progressbar.start();
     if ($scope.params.page > 1) {
       $scope.params.page--;
       $scope.getMessages();
@@ -44,13 +48,17 @@ function($rootScope, $scope, $filter, $location, $cookies,
   $scope.getMessages = function() {
     if ($routeParams.user_id) {
       $scope.params.user_id = $routeParams.user_id;
-      $scope.messages = Message.index($scope.params);
+      $scope.messages = Message.index($scope.params, function(data) {
+        progressbar.complete();
+      });
       User.get({id: $scope.params.user_id}, function(data) {
         var name = data.name;
         $scope.title = name + "'s Messages";
       })
     } else {
-      $scope.messages = Message.index($scope.params);
+      $scope.messages = Message.index($scope.params, function(data) {
+        progressbar.complete();
+      });
       $scope.title = "All Messages";
     }
   }
