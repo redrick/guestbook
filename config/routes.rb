@@ -6,15 +6,10 @@ Guestbook::Application.routes.draw do
 
   get '/messages_count', to: "messages#count"
 
-  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
-
-  devise_scope :users do
-
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"} do
     post '/sessions' => 'sessions#create'
     delete '/sessions' => 'sessions#destroy'
-
   end
-
 
 
   # The priority is based upon order of creation:

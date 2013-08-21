@@ -4,11 +4,12 @@ angular.module('User', []).
     factory('User', function ($rootScope, $resource) {
 
  var User = $resource('/users/:id.json',
-      {userId:'@id'},
+      {id:'@id'},
       {
        index: {method:'GET', isArray:true},
        create: {method: 'POST'},
-       get: {method: 'GET'}
+       get: {method: 'GET'},
+       save: {method: 'PATCH'}
       }
       );
 

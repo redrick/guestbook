@@ -1,7 +1,7 @@
 angular.module('guestbook',
     [ 'MessagesCtrl', 'SessionCtrl', 'ngCookies', 'ngResource',
     'Message', 'User', 'ngAnimate', 'ngRoute', 'ui.bootstrap',
-    'MainCtrl', 'Session'])
+    'MainCtrl', 'Session', 'ProfileCtrl'])
     .config(function($routeProvider, $locationProvider, $dialogProvider) {
   'use strict';
 

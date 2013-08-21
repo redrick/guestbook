@@ -21,6 +21,14 @@ function($rootScope, $scope, $filter, $location, $cookies, $cookieStore,
     $rootScope.signingIn = false;
   };
 
+  $scope.openProfile = function () {
+    $rootScope.editingProfile = true;
+  };
+
+  $scope.closeProfile = function () {
+    $rootScope.editingProfile = false;
+  };
+
   $scope.openMessageForm = function () {
     if ($rootScope.current_user) {
       $rootScope.creatingMessage = true;

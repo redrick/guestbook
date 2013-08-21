@@ -1,0 +1,32 @@
+<div modal="editingProfile" close="closeProfile()" options="opts" ng-controller="ProfileCtrl">
+  <div class="modal-header">
+      <h3>My Profile</h3>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal" ng-submit="updateProfile()">
+      <div class="control-group">
+        <label class="control-label" for="inputName">Name</label>
+        <div class="controls">
+          <input type="text" id="inputName" placeholder="Name" ng-model="user.name" required>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputLocation">Location</label>
+        <div class="controls">
+          <input type="text" id="inputLocation" placeholder="Location" ng-model="user.location" required>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputPassword">Password</label>
+        <div class="controls">
+          <input type="password" id="inputPassword" placeholder="Password" ng-model="user.user.password">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn cancel" ng-click="closeProfile()">Cancel</button>
+    <button type="submit" class="btn btn-primary" ng-click="updateProfile()">Save</button>
+  </div>
+</div>
