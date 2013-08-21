@@ -16,6 +16,7 @@
   RSpec.configure do |config|
     # add devise test helpers to our specs
     config.include Devise::TestHelpers, :type => :controller
+    config.extend ControllerMacros, :type => :controller
     # config.include RspecAttributesAccessible
     # config.mock_with :mocha
     # config.mock_with :flexmock

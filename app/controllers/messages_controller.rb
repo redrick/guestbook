@@ -76,45 +76,48 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
+
     @message = current_user.messages.new(message_params)
+
     if @message
       respond_to do |format|
         if @message.save
-          format.html { redirect_to @message, notice: 'Message was successfully created.' }
+          # debugger
+          format.html do
+            redirect_to @message, notice: 'Message was successfully created.'
+          end
           format.json { render :_message }
         else
           format.html { render action: "new" }
           format.json { render json: @message.errors, status: :unprocessable_entity }
         end
       end
-    else
-      redirect_to_index
     end
   end
 
   # PUT /messages/1
   # PUT /messages/1.json
   def update
-    @message = current_user.messages.find(params[:id])
+    @message = current_user.messages.find_by_id(params[:id])
     if @message
       respond_to do |format|
-        if @message.update_attributes(params[:message])
+        if @message.update_attributes(message_params)
           format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-          format.json { head :no_content }
+          format.json { render :_message }
         else
           format.html { render action: "edit" }
           format.json { render json: @message.errors, status: :unprocessable_entity }
         end
       end
     else
-      redirect_to_index
+      not_the_owner
     end
   end
 
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
-    @message = current_user.find(params[:id])
+    @message = current_user.messages.find_by_id(params[:id])
     if @message
       @message.destroy
       respond_to do |format|
@@ -122,16 +125,16 @@ class MessagesController < ApplicationController
         format.json { head :no_content }
       end
     else
-      redirect_to_index
+      not_the_owner
     end
   end
 
   private
 
-  def redirect_to_index
+  def not_the_owner
     respond_to do |format|
       format.html { redirect_to messages_url }
-      format.json { head :no_content }
+      format.json { render :json => {:error => "You do not have permission to modify this message"} }
     end
   end
 

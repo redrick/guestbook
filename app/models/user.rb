@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   before_save :ensure_authentication_token
 
+  validates_presence_of :location, :name
 
   has_many :messages
 
