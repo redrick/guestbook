@@ -33,7 +33,7 @@ function($rootScope, $scope, $filter, $location, $cookies, $cookieStore,
   $scope.isValidUser = function() {
     var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     var validEmail = re.test($scope.new_user.user.email);
-    return $scope.new_user.user.email && validEmail && $scope.new_user.user.password && $scope.new_user.user.location && $scope.new_user.user.name
+    return $scope.new_user.user.email && validEmail && $scope.new_user.user.password && $scope.new_user.user.password.length > 5 && $scope.new_user.user.location && $scope.new_user.user.name
   }
 
 });
