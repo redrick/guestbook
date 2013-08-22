@@ -17,6 +17,7 @@ describe('Controller: MessagesCtrl', function () {
       $provide.value('Message', guestbookMocks.Message);
       $provide.value('User', guestbookMocks.User);
       $provide.value('progressbar', guestbookMocks.progressbar);
+      $provide.value('$timeout', guestbookMocks.$timeout)
     });
 
   });
@@ -43,6 +44,10 @@ describe('Controller: MessagesCtrl', function () {
         expect(scope.params).toEqual({per_page: 20, page: 1})
       });
 
+      it("should get messages in a timeout function to ensure animation happens", function() {
+        expect(guestbookMocks.$timeout).toHaveBeenCalledWith(jasmine.any(Function), 0);
+      })
+
       it("should get total message count from server and set pagination details", function () {
         expect(guestbookMocks.Message.count).toHaveBeenCalled();
         expect(scope.message_count).toBe(30);
@@ -58,11 +63,34 @@ describe('Controller: MessagesCtrl', function () {
 
     describe('when getting all messages', function() {
 
-      it('should get the first page of messages from the server and set the right title', function() {
+      beforeEach(function() {
+        guestbookMocks.progressbar.start.reset();
+      })
 
+      it('should get the first page of messages from the server and set the right title', function() {
+        scope.getMessages();
+        expect(scope.messages).toEqual(guestbookFixtures.pageOneMessages());
+        expect(scope.title).toEqual("All Messages");
+        expect(guestbookMocks.progressbar.complete).toHaveBeenCalled();
       });
 
+      it('should get allow getting of next and previous pages', function() {
+        scope.nextPage();
+        expect(guestbookMocks.progressbar.start).toHaveBeenCalled();
+        expect(scope.params.page).toBe(2);
+        scope.previousPage();
+        expect(guestbookMocks.progressbar.start).toHaveBeenCalled();
+        expect(scope.params.page).toBe(1);
+      })
+
     });
+
+    it('should allow posting of messages', function() {
+      scope.new_message.content = guestbookFixtures.message1.content;
+      scope.messages = [];
+      scope.postMessage();
+      expect(scope.messages[0]).toEqual(guestbookFixtures.message1)
+    })
 
   });
 
@@ -80,7 +108,10 @@ describe('Controller: MessagesCtrl', function () {
     describe('when getting all messages', function() {
 
       it('should only get the first page of messages for the specific user in question', function() {
-
+        scope.getMessages();
+        expect(scope.params.user_id).toBe(1);
+        expect(guestbookMocks.User.get).toHaveBeenCalledWith({id: 1}, jasmine.any(Function))
+        expect(scope.title).toEqual("test user 1's Messages")
       })
 
     })

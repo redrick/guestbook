@@ -39,6 +39,23 @@ body {
   #messages td.user-info {
     width: 300px; }
 
+#messages-list {
+  width: 100%;
+  list-style: none;
+  margin: 0px; }
+  #messages-list li.message {
+    border-radius: 5px;
+    margin: 20px 0px;
+    border-bottom: 1px solid #DAE5E7;
+    padding: 10px 0px; }
+    #messages-list li.message div.content {
+      width: 100%;
+      margin: 20px 0px;
+      font-size: 20px;
+      line-height: 30px; }
+    #messages-list li.message div.user-info {
+      color: #7f8c8d; }
+
 #messages-title {
   color: #2C3E50;
   margin-top: -50px; }

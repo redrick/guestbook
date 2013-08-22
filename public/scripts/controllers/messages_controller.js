@@ -8,11 +8,6 @@ function($rootScope, $scope, $filter, $location, $cookies, $log,
 
   $scope.params = {per_page: 20, page: 1}
 
-  $timeout(function() {
-    $scope.getMessages();
-    $scope.$apply();
-  }, 0);
-
    Message.count(function(data) {
     $scope.message_count = data.count
     $scope.pages = [];
@@ -57,6 +52,7 @@ function($rootScope, $scope, $filter, $location, $cookies, $log,
       })
     } else {
       $scope.messages = Message.index($scope.params, function(data) {
+        console.log('got messages');
         progressbar.complete();
       });
       $scope.title = "All Messages";
@@ -73,14 +69,10 @@ function($rootScope, $scope, $filter, $location, $cookies, $log,
   }
 
 
-  // socket = new WebSocket("ws://0.0.0.0:9292/rt");
-  // socket.onmessage = function(message) {
-  //   alert(message.data);
-  // }
-  // setTimeout(function() {
-  //   socket.send('zing!');
-  // }, 3000);
-
+  $timeout(function() {
+    $scope.getMessages();
+    $scope.$apply();
+  }, 0);
 
 
 

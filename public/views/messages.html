@@ -1,13 +1,9 @@
 
 
-
-
-
-
 <!-- <input type="search" ng-model="q" placeholder="filter messages..." /> -->
 <h3 id="messages-title" ng-cloak>{{title}}</h3>
 
-<table id="messages" class="table table-hover">
+<!-- <table id="messages" class="table table-hover">
   <tr><th>guest info</th><th>message</th></tr>
   <tr class="animate-repeat" ng-repeat="message in messages  | orderBy:'id':true | filter:q" ng-cloak>
 
@@ -18,7 +14,20 @@
     </td>
     <td class="content">{{message.content}}</td>
   </tr>
-</table>
+</table> -->
+
+<ul id="messages-list">
+  <li class="message animate-repeat" ng-repeat="message in messages  | orderBy:'id':true | filter:q">
+    <div class="user-info">
+      <a ng-href="#/users/{{message.user.id}}/messages">{{message.user.name}}</a>
+      from {{message.user.location}}
+      at {{message.created_at | date:'h:mma on M/d'}}
+    </div>
+    <div class="content">
+      {{message.content}}
+    </div>
+  </li>
+</ul>
 
   <div id="message-pager" class="pagination">
     <ul>
