@@ -6,8 +6,12 @@ guestbookMocks = {
   Message: function Message(data) {
     angular.copy(data || {}, this);
   },
-
-  User: {},
+  Session: function Session(data) {
+    angular.copy(data || {}, this);
+  },
+  User: function User(data) {
+    angular.copy(data || {}, this);
+  },
   progressbar: {
     color: jasmine.createSpy('color'),
     start: jasmine.createSpy('start'),
@@ -15,7 +19,10 @@ guestbookMocks = {
   },
   $timeout: jasmine.createSpy('$timeout').andCallFake(function(callback, duration) {
     callback();
-  })
+  }),
+  $cookieStore: {
+    put: jasmine.createSpy('put')
+  }
 }
 
 guestbookFixtures = {
@@ -46,3 +53,15 @@ guestbookMocks.Message.prototype.$create = jasmine.createSpy('$create').andCallF
 guestbookMocks.User.get = jasmine.createSpy('get').andCallFake(function(params, callback) {
   callback(guestbookFixtures.user1);
 });
+
+guestbookMocks.User.prototype.$create = jasmine.createSpy('$create').andCallFake(function(callback) {
+  callback(guestbookFixtures.user1)
+})
+
+guestbookMocks.User.prototype.$save = jasmine.createSpy('$create').andCallFake(function(callback) {
+  callback(guestbookFixtures.user1)
+})
+
+guestbookMocks.Session.prototype.$login = jasmine.createSpy('$create').andCallFake(function(callback) {
+  callback(guestbookFixtures.user1)
+})

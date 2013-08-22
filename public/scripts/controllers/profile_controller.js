@@ -1,7 +1,7 @@
 angular.module('ProfileCtrl', []).
 controller('ProfileCtrl',
 function($rootScope, $scope, $filter, $location, $cookies,
-  $route, $log, $exceptionHandler, $routeParams, User, $cookieStore) {
+  $log, $exceptionHandler, $routeParams, User, $cookieStore) {
 
   if ($scope.current_user) {
     $scope.user = new User();
