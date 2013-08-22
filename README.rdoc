@@ -1,5 +1,3 @@
-== Guestbook
-
 == Requirements
 
 * Rails 4.0.0
