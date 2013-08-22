@@ -1,16 +1,19 @@
 Guestbook::Application.routes.draw do
-  resources :users
+
   resources :messages
 
   get '/rt', to: "messages#realtime"
 
   get '/messages_count', to: "messages#count"
 
-  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"} do
+
+
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions", :users => "users"} do
     post '/sessions' => 'sessions#create'
     delete '/sessions' => 'sessions#destroy'
   end
 
+  patch '/users/:id', to: 'users#update'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
