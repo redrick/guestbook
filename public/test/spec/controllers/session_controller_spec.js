@@ -32,8 +32,8 @@ describe('Controller: SessionCtrl', function () {
   describe('on initialization', function () {
 
     it("should init user and session models", function() {
-      expect(scope.new_user).toEqual(new guestbookMocks.User());
-      expect(scope.session).toEqual(new guestbookMocks.Session());
+      expect(scope.new_user).not.toEqual(null)
+      expect(scope.session).not.toEqual(null)
     });
 
   });
