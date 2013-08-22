@@ -5,13 +5,13 @@
   <div class="modal-body">
     <form class="form-horizontal" ng-submit="signinUser()">
       <div class="control-group">
-        <label class="control-label" for="inputEmail">Email</label>
+        <label class="control-label" for="inputEmail">Email (required)</label>
         <div class="controls">
           <input type="text" id="inputEmail" placeholder="Email" ng-model="session.user.email" required>
         </div>
       </div>
       <div class="control-group">
-        <label class="control-label" for="inputPassword">Password</label>
+        <label class="control-label" for="inputPassword">Password (required)</label>
         <div class="controls">
           <input type="password" id="inputPassword" placeholder="Password" ng-model="session.user.password" required>
         </div>
@@ -27,6 +27,6 @@
 
   <div class="modal-footer">
       <button class="btn cancel" ng-click="closeSigninForm()">Cancel</button>
-      <button type="submit" class="btn btn-primary" ng-click="signinUser()">Sign in</button>
+      <button type="submit" class="btn btn-primary ng-hide" ng-click="signinUser()" ng-show="isValidSession()">Sign in</button>
   </div>
 </div>

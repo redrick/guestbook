@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  include Tubesock::Hijack
+
 
   before_filter :authenticate_user!, :except => [:new, :show, :index, :count]
 
@@ -58,18 +58,6 @@ class MessagesController < ApplicationController
     @message = current_user.messages.find(params[:id])
     if !@message
       redirect_to_index
-    end
-  end
-
-  def realtime
-    hijack do |tubesock|
-      tubesock.onopen do
-        tubesock.send_data "Hello, friend"
-      end
-
-      tubesock.onmessage do |m|
-        tubesock.send_data m
-      end
     end
   end
 

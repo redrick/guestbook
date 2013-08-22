@@ -51,6 +51,6 @@
 
   <div class="modal-footer">
       <button class="btn cancel" ng-click="closeMessageForm()">Cancel</button>
-      <button type="submit" class="btn btn-primary" ng-click="postMessage()">Create</button>
+      <button type="submit" class="btn btn-primary ng-hide" ng-click="postMessage()" ng-show="new_message.content" ng-cloak>Create</button>
   </div>
 </div>
