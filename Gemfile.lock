@@ -1,14 +1,3 @@
-GIT
-  remote: git://github.com/plataformatec/devise.git
-  revision: 6b5988d756d780903bf8c9ccb3e2b3b724ccebe8
-  branch: rails4
-  specs:
-    devise (2.2.4)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      warden (~> 1.2.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -48,6 +37,11 @@ GEM
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
+    devise (3.0.3)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.3)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     factory_girl (4.2.0)
@@ -134,7 +128,7 @@ PLATFORMS
 DEPENDENCIES
   database_cleaner (= 1.0.0.RC1)
   debugger
-  devise!
+  devise (~> 3.0.3)
   factory_girl
   oj
   rabl

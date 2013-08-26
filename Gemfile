@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 gem 'sqlite3'
 gem 'rake', '0.9.2.2'
-gem 'devise', :git => "git://github.com/plataformatec/devise.git", :branch => "rails4"
+gem "devise", "~> 3.0.3"
 gem 'rabl'
 gem 'oj'
 gem 'will_paginate', '~> 3.0'

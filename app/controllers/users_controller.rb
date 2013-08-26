@@ -22,6 +22,16 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/1
+  # GET /users/1.json
+  def show
+    @current_user = current_user
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :_user }
+    end
+  end
 
   private
 

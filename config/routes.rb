@@ -14,6 +14,7 @@ Guestbook::Application.routes.draw do
   end
 
   patch '/users/:id', to: 'users#update'
+  get '/users/:id', to: 'users#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
