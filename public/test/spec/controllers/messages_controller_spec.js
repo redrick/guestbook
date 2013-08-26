@@ -41,7 +41,7 @@ describe('Controller: MessagesCtrl', function () {
       });
 
       it("should set default params", function() {
-        expect(scope.params).toEqual({per_page: 20, page: 1})
+        expect(scope.params).toEqual({per_page: 10, page: 1})
       });
 
       it("should get messages in a timeout function to ensure animation happens", function() {
@@ -51,8 +51,8 @@ describe('Controller: MessagesCtrl', function () {
       it("should get total message count from server and set pagination details", function () {
         expect(guestbookMocks.Message.count).toHaveBeenCalled();
         expect(scope.message_count).toBe(30);
-        expect(scope.total_pages).toBe(2);
-        expect(scope.pages).toEqual([1,2]);
+        expect(scope.total_pages).toBe(3);
+        expect(scope.pages).toEqual([1,2,3]);
       });
 
       it("should initialize a new message", function() {

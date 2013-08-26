@@ -6,12 +6,12 @@ function($rootScope, $scope, $filter, $location, $cookies, $log,
   progressbar.color("#1abc9c")
   progressbar.start();
 
-  $scope.params = {per_page: 20, page: 1}
+  $scope.params = {per_page: 10, page: 1}
 
    Message.count(function(data) {
     $scope.message_count = data.count
     $scope.pages = [];
-    $scope.total_pages = Math.round($scope.message_count/$scope.params.per_page)
+    $scope.total_pages = Math.ceil($scope.message_count/$scope.params.per_page)
     for (var i=0; i < $scope.total_pages; i++) {
       $scope.pages.push(i+1);
     }
