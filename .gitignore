@@ -8,5 +8,4 @@ tmp/
 tmp/**/*
 *.orig
 .DS_Store
-config/database.yml
 .sass-cache/
