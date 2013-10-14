@@ -8,6 +8,7 @@ gem 'rabl'
 gem 'oj'
 gem 'will_paginate', '~> 3.0'
 gem 'sanitize'
+gem 'thin'
 
 group :development, :test do
   #gem 'debugger' # unless ENV['RM_INFO']  - this keeps changing gemfile.lock - need a better developer specific gemfile https://github.com/carlhuda/bundler/issues/183
