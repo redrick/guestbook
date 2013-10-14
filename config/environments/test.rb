@@ -11,9 +11,6 @@ Guestbook::Application.configure do
   config.serve_static_assets = true
   config.static_cache_control = "public, max-age=3600"
 
-  # Log error messages when you accidentally call methods on nil
-  config.whiny_nils = true
-
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -28,6 +25,8 @@ Guestbook::Application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+
+  config.eager_load = false
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr

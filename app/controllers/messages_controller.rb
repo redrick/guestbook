@@ -12,7 +12,6 @@ class MessagesController < ApplicationController
     else
       @messages = Message.all
     end
-
     if params[:page] and params[:per_page]
       @messages = @messages.paginate(:per_page=>params[:per_page].to_i,:page=>params[:page].to_i).order("id desc")
       @page = params[:page]

@@ -6,9 +6,14 @@ Guestbook::Application.routes.draw do
 
   get '/messages_count', to: "messages#count"
 
+  devise_for :users, 
+    controllers: {
+      registrations: "registrations", 
+      sessions: "sessions", 
+      users: "users"
+    }
 
-
-  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions", :users => "users"} do
+  devise_scope :user do
     post '/sessions' => 'sessions#create'
     delete '/sessions' => 'sessions#destroy'
   end

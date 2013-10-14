@@ -29,6 +29,7 @@ angular.module('guestbook',
 .run(function($rootScope, $cookieStore, $animate) {
   $animate.enabled(true);
   $rootScope.current_user = $cookieStore.get('current_user');
+  console.log($cookieStore.get('current_user'));
 });
 
 

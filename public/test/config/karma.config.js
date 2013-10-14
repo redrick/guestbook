@@ -1,28 +1,34 @@
-basePath = '../../';
 
-files = [
-  JASMINE,
-  JASMINE_ADAPTER,
-  'vendor/angular.js',
-  'vendor/angular-*.js',
-  'test/lib/angular-mocks.js',
-  'test/lib/guestbook-mocks.js',
-  'scripts/**/*.js',
-  'test/spec/**/*.js'
-];
 
-// server port
-port = 8081;
+module.exports = function (config) {
+  config.set({
+    basePath : '../../',
 
-// runner port
-runnerPort = 9100;
+    files : [
+      'vendor/angular.js',
+      'vendor/angular-*.js',
+      'test/lib/angular-mocks.js',
+      'test/lib/guestbook-mocks.js',
+      'scripts/**/*.js',
+      'test/spec/**/*.js'
+    ],
 
-browsers = ['PhantomJS'];
+    frameworks : ['jasmine'],
 
-reporters = ['dots'];
+    // server port
+    port : 8081,
 
-autoWatch = true;
+    // runner port
+    runnerPort : 9100,
 
-junitReporter = {
-  outputFile: 'test/output/unit-results.xml'
-};
+    browsers : ['PhantomJS'],
+
+    reporters : ['dots'],
+
+    autoWatch : true,
+
+    junitReporter : {
+      outputFile: 'test/output/unit-results.xml'
+    }
+  });
+}
